@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Funil LeAnge Setembro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+[hidden]{display:none!important}
+img{max-width:100%}
+:root{
+  color-scheme:light;
+  --page:#f4f6f3; --surface:#fcfcfb; --surface-2:#eef1ec;
+  --ink:#141a16; --ink-2:#4b534d; --muted:#7f877f;
+  --grid:#e1e4dd; --axis:#c3c8bf; --ring:rgba(20,26,22,.10);
+  --accent:#1f5b47; --accent-soft:#dcebe3;
+  --s1:#2a78d6; --s2:#eb6834; --gray:#b9bdb5;
+  --crit:#d03b3b; --crit-soft:#fbe7e5; --warn:#b77900; --warn-soft:#fbf0d9; --good:#0c7a0c; --good-soft:#e2f2e0;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --page:#0f1311; --surface:#181d1a; --surface-2:#202622;
+    --ink:#f3f5f2; --ink-2:#c1c8c0; --muted:#8c948b;
+    --grid:#2a302c; --axis:#3a413c; --ring:rgba(255,255,255,.10);
+    --accent:#7cc7a5; --accent-soft:#1d3329;
+    --s1:#3987e5; --s2:#d95926; --gray:#4d544f;
+    --crit:#e66767; --crit-soft:#3a1f1f; --warn:#e2a93a; --warn-soft:#352b17; --good:#3fbf3f; --good-soft:#1b2e1b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0f1311; --surface:#181d1a; --surface-2:#202622;
+  --ink:#f3f5f2; --ink-2:#c1c8c0; --muted:#8c948b;
+  --grid:#2a302c; --axis:#3a413c; --ring:rgba(255,255,255,.10);
+  --accent:#7cc7a5; --accent-soft:#1d3329;
+  --s1:#3987e5; --s2:#d95926; --gray:#4d544f;
+  --crit:#e66767; --crit-soft:#3a1f1f; --warn:#e2a93a; --warn-soft:#352b17; --good:#3fbf3f; --good-soft:#1b2e1b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.55 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 16px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.05;font-weight:700}
+h2{font-size:24px;font-weight:700}
+h3{font-size:16px;font-weight:600;font-family:"Public Sans",system-ui,sans-serif}
+p{margin:0;max-width:68ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+header{display:flex;flex-direction:column;gap:12px}
+header .sub{color:var(--ink-2);font-size:16px}
+.verdict{background:var(--surface);border:1px solid var(--ring);border-left:4px solid var(--crit);border-radius:10px;padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+.verdict strong{font-size:18px;line-height:1.35;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700}
+.verdict p{color:var(--ink-2)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.kpi .v{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:32px;font-weight:700;line-height:1.1}
+.kpi .l{font-size:13px;color:var(--ink-2);font-weight:600}
+.kpi .d{font-size:13px;color:var(--muted)}
+.kpi.bad .v{color:var(--crit)}
+section{display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.sec-head p{color:var(--ink-2)}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.insights{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.insights li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.pill{align-self:flex-start;justify-self:start;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill.crit{background:var(--crit-soft);color:var(--crit)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.info{background:var(--accent-soft);color:var(--accent)}
+.funnel{display:flex;flex-direction:column;gap:6px}
+.fstep{display:grid;grid-template-columns:230px 1fr 118px;gap:14px;align-items:center}
+.fstep .lab{font-weight:600;font-size:14px}
+.fstep .lab small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.fbar{height:30px;background:var(--surface-2);border-radius:4px;position:relative;overflow:hidden}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:var(--s1)}
+.fstep .val{text-align:right;font-weight:700}
+.fstep .val small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.gap{display:grid;grid-template-columns:230px 1fr;gap:14px;font-size:13px;color:var(--ink-2);padding:2px 0 6px}
+.gap span:last-child{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.gap.big span:last-child{color:var(--crit);font-weight:600}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;text-align:right;padding:8px 10px;border-bottom:1px solid var(--axis);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td:first-child{font-weight:600}
+td .sub{display:block;font-weight:400;color:var(--muted);font-size:12px;white-space:normal}
+td.hi{color:var(--crit);font-weight:700}
+td.ok{color:var(--good);font-weight:700}
+td.na{color:var(--muted)}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--page);font-size:12.5px;line-height:1.45;padding:8px 10px;border-radius:6px;z-index:10;max-width:260px;font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted)}
+.hbars{display:flex;flex-direction:column;gap:8px}
+.hrow{display:grid;grid-template-columns:minmax(120px,210px) 1fr 96px;gap:12px;align-items:center;font-size:14px;cursor:default}
+.hrow .t{height:18px;background:var(--surface-2);border-radius:3px;position:relative}
+.hrow .t i{position:absolute;left:0;top:0;bottom:0;border-radius:0 3px 3px 0;background:var(--gray)}
+.hrow.em .t i{background:var(--s1)}
+.hrow.crit .t i{background:var(--crit)}
+.hrow .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.hrow .n small{color:var(--muted);font-weight:400}
+.hrow:hover .t{outline:1px solid var(--axis)}
+.plan{counter-reset:p;display:flex;flex-direction:column;gap:0;margin:0;padding:0;list-style:none}
+.plan li{counter-increment:p;display:grid;grid-template-columns:38px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--grid);align-items:start}
+.plan li::before{content:counter(p);font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;font-size:22px;color:var(--accent);line-height:1.1}
+.plan h3{margin-bottom:4px}
+.plan p{color:var(--ink-2);font-size:14px}
+.method{font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.method li{max-width:90ch}
+@media (max-width:820px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  .fstep{grid-template-columns:1fr 70px}
+  .fstep .lab{grid-column:1/-1}
+  .gap{grid-template-columns:1fr}
+  .gap span:first-child{display:none}
+  .hrow{grid-template-columns:1fr 90px}
+  .hrow .lbl{grid-column:1/-1}
+  .plan li{grid-template-columns:30px 1fr}
+  .plan li .pill{grid-column:2}
+}
+@media (max-width:420px){.kpis{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Pousada LeAnge · CRM Kommo · leads criados de 01 a 25/09/2026</span>
+  <h1>Funil LeAnge Setembro</h1>
+  <p class="sub">Diagnóstico completo do funil de vendas: onde os leads se perdem, o que mudou ao longo do mês, desempenho por origem, campanha e atendente, e o que fazer agora.</p>
+</header>
+
+<div class="verdict">
+  <span class="pill crit">Diagnóstico</span>
+  <strong>Volume de lead não é o problema. Entraram 2.233 leads no mês e nenhum deles foi movido até “Reserva Concluída”. As 18 reservas registradas foram cadastradas como cards novos, já ganhos, e 10 delas vieram da base de clientes.</strong>
+  <p>O maior vazamento está logo na entrada: 55% dos leads somem antes de qualquer qualificação e são desqualificados automaticamente em 4 dias. O segundo gargalo é o orçamento: 364 propostas seguem abertas, 101 delas sem movimentação há mais de 7 dias. E desde 22/09 não houve nenhuma reserva.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><span class="l">Leads recebidos</span><span class="v num">2.233</span><span class="d">89/dia · volume subiu de 84 para 106/dia</span></div>
+  <div class="kpi bad"><span class="l">Reservas</span><span class="v num">18</span><span class="d">0,8% dos leads · zero de 22 a 25/09</span></div>
+  <div class="kpi"><span class="l">Receita registrada</span><span class="v num">R$ 149,7 mil</span><span class="d">ticket médio R$ 8,3 mil · 68% vinda da base</span></div>
+  <div class="kpi bad"><span class="l">Sumiram na 1ª conversa</span><span class="v num">55%</span><span class="d">dos leads com 4+ dias (01–20/09)</span></div>
+</div>
+
+<section id="funil">
+  <div class="sec-head">
+    <span class="eyebrow">1 · Funil do mês</span>
+    <h2>O maior gap está entre a entrada e a primeira conversa real</h2>
+    <p>Funil reconstruído a partir da etapa atual de cada lead (o export não traz o histórico de etapas). Cada barra mostra quantos leads chegaram pelo menos até aquela fase.</p>
+  </div>
+  <div class="card">
+    <div class="funnel" id="funnel"></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <ul class="insights">
+        <li><span class="pill crit">Gap 1</span><span><b>Entrada → engajamento: perda de 54,5%.</b> 1.217 leads não passaram do contato inicial: 903 “parou de responder”, 65 “nunca respondeu”, 30 mensagens aleatórias e 219 que ainda estão em contato inicial. Só 1% dos que pararam de responder tem unidade, nº de hóspedes ou pets preenchidos, ou seja, a conversa morre antes da qualificação.</span></li>
+        <li><span class="pill crit">Gap 2</span><span><b>Orçamento → reserva: nenhuma conversão rastreada.</b> 384 leads receberam orçamento (364 ainda abertos) e nenhum foi para “Reserva Concluída”. Só 2 estão em “Link/Dados bancários enviados”.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul class="insights">
+        <li><span class="pill warn">Atenção</span><span><b>386 leads em “Finalizado/perdido” sem motivo.</b> É 25% de tudo o que foi perdido e não dá para saber se foi preço, data ou desistência. Essa etapa também não fecha o lead no Kommo (sem data de fechamento).</span></li>
+        <li><span class="pill info">Perfil</span><span><b>185 desqualificados por perfil</b> (18% dos que engajaram), puxados por “tem crianças” (115). Preço quase não aparece: só 11 leads saíram por “fora do orçamento”.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="evolucao">
+  <div class="sec-head">
+    <span class="eyebrow">2 · Evolução dentro do mês</span>
+    <h2>Mais leads a cada semana, menos Google e zero reservas na última</h2>
+    <p>As taxas de funil usam só leads com pelo menos 4 dias de vida (criados até 20/09), porque a automação de “parou de responder” só age depois desse prazo. A semana 4 ainda está amadurecendo.</p>
+  </div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Semana</th><th>Leads</th><th>Leads/dia</th><th>% Meta</th><th>% Google</th><th>% com orçamento</th><th>% sumiram</th><th>% crianças</th><th>Reservas</th><th>Receita</th></tr></thead>
+      <tbody>
+        <tr><td>S1 · 01–07/09</td><td>589</td><td>84</td><td>38,7%</td><td>11,7%</td><td>12,6%</td><td>57,2%</td><td>3,2%</td><td>5</td><td>R$ 27,8 mil</td></tr>
+        <tr><td>S2 · 08–14/09<span class="sub">limpeza em massa em 10/09</span></td><td>559</td><td>80</td><td>39,2%</td><td>10,7%</td><td class="hi">5,5%</td><td>51,7%</td><td>5,0%</td><td>7</td><td>R$ 77,8 mil</td></tr>
+        <tr><td>S3 · 15–21/09<span class="sub">taxas sobre 15–20/09</span></td><td>660</td><td>94</td><td>44,8%</td><td>10,5%</td><td>17,3%</td><td>55,7%</td><td>6,9%</td><td>6</td><td>R$ 44,2 mil</td></tr>
+        <tr><td>S4 · 22–25/09<span class="sub">em maturação</span></td><td>425</td><td>106</td><td class="hi">60,7%</td><td class="hi">3,5%</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="hi">0</td><td class="hi">R$ 0</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px">
+      <h3>Leads por dia, por origem paga</h3>
+      <div class="legend"><span><i style="background:var(--s1)"></i>Meta Ads</span><span><i style="background:var(--s2)"></i>Google Ads</span></div>
+    </div>
+    <div class="chart" id="daily"></div>
+    <p class="note" style="margin-top:8px">Google caiu de uma média de ~10 leads/dia para 1–4/dia a partir de 22/09, enquanto a Meta passou de ~35 para 55–73/dia. Google é a origem declarada de 8 das 18 reservas; Meta, de nenhuma.</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><ul class="insights">
+      <li><span class="pill crit">Queda</span><span><b>Semana 2 teve a pior taxa de orçamento (5,5%)</b> e o maior volume em “Finalizado/perdido” (30%). Foi também a última semana em que a Atendente A, com melhor taxa de orçamento, recebeu leads.</span></li>
+      <li><span class="pill warn">Tendência</span><span><b>“Tem crianças” dobrou</b> de 3,2% para 6,9% dos leads entre S1 e S3, acompanhando o aumento da participação da Meta.</span></li>
+    </ul></div>
+    <div class="card"><ul class="insights">
+      <li><span class="pill good">Melhora</span><span><b>Semana 3 teve a melhor taxa de orçamento (17,3%)</b>, mas esses orçamentos ainda não viraram reserva.</span></li>
+      <li><span class="pill crit">Alerta</span><span><b>4 dias seguidos sem reserva</b> (22 a 25/09), mesmo com o maior volume de leads do mês.</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="perdas">
+  <div class="sec-head">
+    <span class="eyebrow">3 · Motivos de perda</span>
+    <h2>Silêncio do lead e perdas sem motivo respondem por 82% das perdas</h2>
+    <p>1.569 leads foram desqualificados ou perdidos no mês (70% do total).</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="hbars" id="loss"></div></div>
+    <div class="card"><ul class="insights">
+      <li><span class="pill crit">Automação</span><span><b>“Parou de responder” é uma regra automática de 4 dias.</b> A mediana entre criação e desqualificação é exatamente 4,0 dias e 91% desses leads nunca foram editados por uma pessoa. Não há evidência no CRM de follow-up antes da regra disparar.</span></li>
+      <li><span class="pill warn">Processo</span><span><b>“Nunca respondeu” deixou de ser usado depois da S1</b> (59 na S1, 0 na S3). Os casos foram absorvidos por “parou de responder”, o que mistura quem nunca falou com quem abandonou a conversa.</span></li>
+      <li><span class="pill warn">Mídia</span><span><b>64% dos “tem crianças” vêm da Meta.</b> No conjunto de público aberto “Pet friendly”, 17,6% dos leads têm crianças. Se a pousada não aceita crianças, o anúncio não está deixando isso claro.</span></li>
+      <li><span class="pill info">Preço</span><span><b>Preço não aparece como barreira.</b> “Fora do orçamento” soma 11 leads (0,7% das perdas). Mas os 386 sem motivo podem esconder isso.</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="origens">
+  <div class="sec-head">
+    <span class="eyebrow">4 · Origens e campanhas</span>
+    <h2>Meta traz 45% dos leads e a pior qualidade</h2>
+    <p>Taxas calculadas sobre leads criados até 20/09. A origem vem do UTM; 37% dos leads chegam sem UTM.</p>
+  </div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Origem</th><th>Leads</th><th>% do total</th><th>% com orçamento</th><th>% sumiram</th><th>% crianças</th><th>Reservas*</th></tr></thead>
+      <tbody>
+        <tr><td>Meta Ads</td><td>1.001</td><td>44,8%</td><td class="hi">9,5%</td><td class="hi">58,6%</td><td class="hi">7,6%</td><td class="hi">0</td></tr>
+        <tr><td>Sem UTM<span class="sub">WhatsApp direto, indicação, base</span></td><td>818</td><td>36,6%</td><td>12,0%</td><td>56,2%</td><td>3,4%</td><td>10</td></tr>
+        <tr><td>Google Ads</td><td>213</td><td>9,5%</td><td>14,7%</td><td>48,9%</td><td>2,1%</td><td>5</td></tr>
+        <tr><td>Instagram (bio)</td><td>159</td><td>7,1%</td><td>16,8%</td><td>40,8%</td><td>4,0%</td><td>3</td></tr>
+        <tr><td>Site (orgânico)</td><td>42</td><td>1,9%</td><td class="ok">21,9%</td><td class="ok">37,5%</td><td>3,1%</td><td>0</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:10px">* Reservas pelo UTM do card de reserva. Pelo campo “Origem do Lead” preenchido pela equipe: Campanha Google 8, Orgânico 6, Recorrente 2, Grupo WhatsApp 1, Link Bio 1.</p>
+  </div>
+  <div class="grid2">
+    <div class="card tbl-wrap">
+      <h3 style="margin-bottom:10px">Meta · campanhas</h3>
+      <table>
+        <thead><tr><th>Campanha</th><th>Leads</th><th>% orç.</th><th>% crianças</th></tr></thead>
+        <tbody>
+          <tr><td>Ongoing RJ</td><td>632</td><td>13,8%</td><td class="hi">9,7%</td></tr>
+          <tr><td>Ongoing SP</td><td>147</td><td class="hi">6,8%</td><td>2,7%</td></tr>
+          <tr><td>Ongoing MG</td><td>120</td><td>17,5%</td><td>4,2%</td></tr>
+          <tr><td>Onetime Ações</td><td>82</td><td class="ok">25,6%</td><td>3,7%</td></tr>
+          <tr><td>Remarketing lista clientes</td><td>18</td><td>11,1%</td><td>0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card tbl-wrap">
+      <h3 style="margin-bottom:10px">Meta · criativos</h3>
+      <table>
+        <thead><tr><th>Criativo</th><th>Leads</th><th>% orç.</th><th>% sumiram</th></tr></thead>
+        <tbody>
+          <tr><td>AD012 Serra Geral (vídeo)<span class="sub">no ar desde 24/06 · 66% dos leads Meta</span></td><td>657</td><td>12,0%</td><td class="hi">45,4%</td></tr>
+          <tr><td>AD04 Feriado 12/nov<span class="sub">novo, 23/09 · em maturação</span></td><td>110</td><td>15,5%</td><td class="na">—</td></tr>
+          <tr><td>AD01 Ambas unidades</td><td>72</td><td>18,1%</td><td>45,8%</td></tr>
+          <tr><td>AD04 Serra Natal</td><td>56</td><td class="ok">28,6%</td><td>32,1%</td></tr>
+          <tr><td>AD09 Mar Geral</td><td>46</td><td>15,2%</td><td class="hi">52,2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card"><ul class="insights">
+    <li><span class="pill good">Escalar</span><span><b>Ofertas com data e público morno convertem melhor.</b> Natal (28,6% de orçamento), Onetime Ações (25,6%) e o público “Mix Engajamento 180D” (28,3%) têm o dobro da taxa do criativo genérico.</span></li>
+    <li><span class="pill crit">Revisar</span><span><b>Um único criativo genérico, no ar há 3 meses, concentra dois terços dos leads Meta.</b> Sinal claro de fadiga e de lead pouco intencionado. SP tem a pior taxa de orçamento (6,8%), provavelmente por distância.</span></li>
+  </ul></div>
+</section>
+
+<section id="atendimento">
+  <div class="sec-head">
+    <span class="eyebrow">5 · Atendimento</span>
+    <h2>Lead que chega à noite ou de madrugada tende a morrer</h2>
+    <p>Leads criados até 20/09, agrupados pelo horário e dia de chegada e pela atendente responsável.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-bottom:10px">% com orçamento por horário de chegada</h3>
+      <div class="hbars" id="hour"></div>
+      <p class="note" style="margin-top:10px">Das 19h às 7h, 61–69% dos leads somem, contra 51% de manhã. 29% dos leads chegam nessa janela.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px">% com orçamento por dia de chegada</h3>
+      <div class="hbars" id="dow"></div>
+      <p class="note" style="margin-top:10px">Segunda, terça e sábado rendem metade da taxa de quarta, quinta e domingo.</p>
+    </div>
+  </div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Atendente</th><th>Leads</th><th>% com orçamento</th><th>% sumiram</th><th>% perdido sem motivo</th><th>Reservas</th><th>Receita</th></tr></thead>
+      <tbody>
+        <tr><td>Atendente A<span class="sub">sem leads novos desde 14/09</span></td><td>393</td><td class="ok">24,9%</td><td>60,1%</td><td>4,8%</td><td>4</td><td>R$ 54,0 mil</td></tr>
+        <tr><td>Atendente B</td><td>626</td><td>11,7%</td><td>55,9%</td><td>21,7%</td><td>8</td><td>R$ 67,9 mil</td></tr>
+        <tr><td>Atendente C</td><td>668</td><td class="hi">4,5%</td><td>52,7%</td><td class="hi">33,7%</td><td>6</td><td>R$ 27,8 mil</td></tr>
+        <tr><td>Atendente D</td><td>28</td><td>7,1%</td><td>14,3%</td><td>0%</td><td>0</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:10px">Parte da diferença é de processo: a Atendente C move para “Finalizado/perdido” leads que outras atendentes mantêm em “Orçamento enviado”. Sem motivo registrado, não dá para separar desempenho de padrão de uso do CRM. Na S3, a Atendente C recebeu 383 leads contra 265 da Atendente B.</p>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="sec-head">
+    <span class="eyebrow">6 · Pipeline em aberto</span>
+    <h2>364 orçamentos abertos são a receita mais rápida de recuperar</h2>
+    <p>Tempo desde a última alteração de cada lead em “Orçamento enviado”, em 25/09.</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="hbars" id="aging"></div></div>
+    <div class="card"><ul class="insights">
+      <li><span class="pill crit">Parado</span><span><b>101 orçamentos sem movimentação há mais de 7 dias</b>, 70 deles há mais de 14. A um ticket médio de R$ 8,3 mil, fechar 5% dos 364 abertos vale cerca de R$ 150 mil, a receita do mês inteiro.</span></li>
+      <li><span class="pill warn">Qualidade</span><span><b>Só 10–12% dos orçamentos têm unidade, hóspedes ou pets preenchidos</b>, e 28% não têm próxima tarefa. Fica difícil priorizar por data de viagem ou mandar oferta certa.</span></li>
+      <li><span class="pill info">Demanda</span><span><b>18 leads em “Aguardando abrir agenda”</b> há 14 dias em média. É demanda para datas ainda fechadas que precisa de contato assim que a agenda abrir.</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="rastreio">
+  <div class="sec-head">
+    <span class="eyebrow">7 · Rastreio e qualidade de dados</span>
+    <h2>Do jeito que o CRM está hoje, não dá para medir o retorno da mídia</h2>
+  </div>
+  <div class="card"><ul class="insights">
+    <li><span class="pill crit">Crítico</span><span><b>Todas as 18 reservas foram criadas e fechadas no mesmo minuto.</b> O card da reserva não é o lead que entrou pelo anúncio. Nenhum telefone das reservas aparece em outro lead do mês, o que indica que a negociação acontece fora deste funil (outro pipeline, card excluído ou WhatsApp sem CRM). Vale confirmar com a equipe como a reserva é lançada.</span></li>
+    <li><span class="pill warn">Base</span><span><b>10 das 18 reservas (R$ 102 mil, 68% da receita) são clientes da base</b>: tags de resgate/RMK, cadastro anterior a agosto ou origem “Recorrente”. As outras 8 (R$ 47,7 mil) não têm vínculo com o lead original.</span></li>
+    <li><span class="pill warn">Campos</span><span><b>Campos-chave quase vazios:</b> “Unidade” em 4,7% dos leads, “Origem do Lead” em 0,9%, UTM ausente em 37%. “Finalizado/perdido” não registra data de fechamento nem motivo.</span></li>
+  </ul></div>
+</section>
+
+<section id="plano">
+  <div class="sec-head">
+    <span class="eyebrow">8 · Plano de ação</span>
+    <h2>Por onde começar</h2>
+    <p>Em ordem de impacto e urgência.</p>
+  </div>
+  <div class="card">
+    <ol class="plan">
+      <li><div><h3>Resgatar os 364 orçamentos abertos</h3><p>Priorizar os 101 parados há mais de 7 dias e quem pediu datas próximas (12/10, novembro, fim de ano). Mensagem com oferta e prazo (“valor garantido até sexta”). É o caminho mais rápido para salvar o mês.</p></div><span class="pill crit">Esta semana</span></li>
+      <li><div><h3>Checar a queda do Google desde 22/09</h3><p>Volume caiu de ~10 para 1–4 leads/dia. Conferir verba, status e lances da campanha 21727833049, a que mais aparece nas reservas.</p></div><span class="pill crit">Hoje</span></li>
+      <li><div><h3>Criar cadência de follow-up antes da automação de 4 dias</h3><p>Toques em D0, D1 e D3 com pergunta de qualificação (datas, unidade, nº de pets). Só depois disso a regra de “parou de responder” deve agir. Separar de novo “nunca respondeu” de “parou de responder”.</p></div><span class="pill crit">Esta semana</span></li>
+      <li><div><h3>Cobrir a janela das 19h às 7h</h3><p>Resposta automática no WhatsApp com as perguntas de qualificação e informações da pousada (adultos, pet friendly, unidades). Primeiro contato humano até 9h do dia seguinte.</p></div><span class="pill warn">Próximos 15 dias</span></li>
+      <li><div><h3>Ajustar a Meta</h3><p>Deixar claro no criativo e na primeira mensagem que a pousada é para adultos com pets. Substituir o AD012 (no ar desde junho), escalar Natal, Ações e público de engajamento 180D. Revisar ou pausar SP.</p></div><span class="pill warn">Próximos 15 dias</span></li>
+      <li><div><h3>Mover o próprio lead até “Reserva Concluída”</h3><p>Parar de criar card novo para a reserva. Sem isso, a conversão da Meta e do Google continua invisível e a decisão de verba é no escuro.</p></div><span class="pill warn">Próximos 15 dias</span></li>
+      <li><div><h3>Motivo obrigatório e campos mínimos</h3><p>Tornar obrigatório o motivo ao mover para “Finalizado/perdido” (preço, data, desistência, concorrente) e preencher unidade e período antes de enviar orçamento. Redistribuir a carga depois da saída da Atendente A.</p></div><span class="pill info">Processo</span></li>
+      <li><div><h3>Ampliar resgate da base</h3><p>A base gerou 68% da receita. Aumentar a cadência de RMK e da lista de clientes, com campanhas para feriados e fim de ano.</p></div><span class="pill good">Contínuo</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="sec-head"><span class="eyebrow">Metodologia</span></div>
+  <ul class="method">
+    <li>Fonte: export do Kommo com 2.233 leads do “Funil de Vendas” criados de 01/09 a 25/09/2026 (16h10). Retrato da etapa atual; o histórico de etapas não vem no export.</li>
+    <li>Taxas de funil, origem, horário e atendente usam 1.715 leads criados até 20/09, para não distorcer com leads que ainda não completaram os 4 dias da automação.</li>
+    <li>“Sumiram” = desqualificado por “parou de responder” ou “nunca respondeu”. “Com orçamento” = etapa atual “Orçamento enviado” ou “Link/dados bancários enviados”.</li>
+    <li>Receita = campo “Venda” das 18 reservas. Não há dados de agosto neste arquivo; para comparar com o mês anterior, exportar o mesmo relatório de agosto.</li>
+  </ul>
+</section>
+
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const tip=document.getElementById('tip');
+function showTip(e,html){tip.innerHTML=html;tip.hidden=false;const x=Math.min(e.clientX+14,window.innerWidth-270);tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px';}
+function hideTip(){tip.hidden=true;}
+const fmt=n=>n.toLocaleString('pt-BR');
+
+const F=[
+ {l:'Leads recebidos',s:'todas as origens',v:2233},
+ {l:'Engajaram na conversa',s:'passaram do 1º contato',v:1016,gap:'−1.217 leads (54,5%): 903 pararam de responder, 219 ainda em contato inicial, 65 nunca responderam, 30 aleatórios',big:true},
+ {l:'Perfil compatível',s:'sem crianças, com pet, perto',v:831,gap:'−185 (18,2%): 115 com crianças, 24 genéricos, 18 sem pet, 17 distância, 11 preço'},
+ {l:'Receberam orçamento',s:'em aberto ou adiante',v:384,gap:'−447: 386 finalizados/perdidos sem motivo, 61 ainda em qualificação',big:true},
+ {l:'Reserva a partir do funil',s:'lead movido até “Reserva Concluída”',v:0,gap:'364 orçamentos abertos · 2 com link de pagamento',big:true},
+];
+const fe=document.getElementById('funnel');
+F.forEach((s,i)=>{
+  if(s.gap){const g=document.createElement('div');g.className='gap'+(s.big?' big':'');g.innerHTML='<span></span><span>↓ '+s.gap+'</span>';fe.appendChild(g);}
+  const pct=s.v/2233*100;
+  const prev=i?F[i-1].v:null;
+  const d=document.createElement('div');d.className='fstep';
+  d.innerHTML=`<div class="lab">${s.l}<small>${s.s}</small></div><div class="fbar"><i style="width:${Math.max(pct,0)}%"></i></div><div class="val num">${fmt(s.v)}<small>${pct.toFixed(1).replace('.',',')}% do total</small></div>`;
+  d.addEventListener('mousemove',e=>showTip(e,`<b>${s.l}</b><br>${fmt(s.v)} leads · ${pct.toFixed(1).replace('.',',')}% do total${prev?'<br>'+(s.v/prev*100).toFixed(1).replace('.',',')+'% da etapa anterior':''}`));
+  d.addEventListener('mouseleave',hideTip);
+  fe.appendChild(d);
+});
+const g2=document.createElement('div');g2.className='gap';g2.innerHTML='<span></span><span style="color:var(--ink-2)">Fora do funil: 18 reservas cadastradas já como ganhas (R$ 149,7 mil), 10 delas de clientes da base.</span>';fe.appendChild(g2);
+
+function hbars(id,rows,max){
+  const el=document.getElementById(id);
+  rows.forEach(r=>{
+    const d=document.createElement('div');d.className='hrow'+(r.c?' '+r.c:'');
+    d.innerHTML=`<span class="lbl">${r.l}</span><div class="t"><i style="width:${r.v/max*100}%"></i></div><span class="n">${r.n}</span>`;
+    d.addEventListener('mousemove',e=>showTip(e,`<b>${r.l}</b><br>${r.tip||r.n}`));
+    d.addEventListener('mouseleave',hideTip);
+    el.appendChild(d);
+  });
+}
+hbars('loss',[
+ {l:'Parou de responder',v:903,n:'903 <small>57,6%</small>',c:'crit',tip:'Automação de 4 dias · 91% sem edição humana'},
+ {l:'Finalizado/perdido (sem motivo)',v:386,n:'386 <small>24,6%</small>',c:'em'},
+ {l:'Tem crianças',v:115,n:'115 <small>7,3%</small>',c:'em',tip:'74 vindos da Meta'},
+ {l:'Nunca respondeu',v:65,n:'65 <small>4,1%</small>'},
+ {l:'Mensagens aleatórias',v:30,n:'30 <small>1,9%</small>'},
+ {l:'Desqualificado (genérico)',v:24,n:'24 <small>1,5%</small>'},
+ {l:'Sem pet / não gosta da proposta',v:18,n:'18 <small>1,1%</small>'},
+ {l:'Distância',v:17,n:'17 <small>1,1%</small>'},
+ {l:'Fora do orçamento',v:11,n:'11 <small>0,7%</small>'},
+],903);
+hbars('hour',[
+ {l:'00h–06h',v:11.6,n:'11,6% <small>112</small>',tip:'112 leads · 68,8% sumiram'},
+ {l:'07h–12h',v:17.8,n:'17,8% <small>624</small>',c:'em',tip:'624 leads · 50,5% sumiram'},
+ {l:'13h–18h',v:8.7,n:'8,7% <small>596</small>',tip:'596 leads · 53,2% sumiram'},
+ {l:'19h–23h',v:7.0,n:'7,0% <small>383</small>',c:'crit',tip:'383 leads · 60,8% sumiram'},
+],20);
+hbars('dow',[
+ {l:'Segunda',v:6.7,n:'6,7% <small>164</small>',c:'crit',tip:'164 leads · 59,8% sumiram'},
+ {l:'Terça',v:7.5,n:'7,5% <small>200</small>',tip:'200 leads · 57,0% sumiram'},
+ {l:'Quarta',v:14.8,n:'14,8% <small>250</small>',c:'em',tip:'250 leads · 48,4% sumiram'},
+ {l:'Quinta',v:16.3,n:'16,3% <small>251</small>',c:'em',tip:'251 leads · 44,6% sumiram'},
+ {l:'Sexta',v:10.8,n:'10,8% <small>286</small>',tip:'286 leads · 54,9% sumiram'},
+ {l:'Sábado',v:7.6,n:'7,6% <small>264</small>',tip:'264 leads · 59,8% sumiram'},
+ {l:'Domingo',v:16.0,n:'16,0% <small>300</small>',c:'em',tip:'300 leads · 60,7% sumiram'},
+],20);
+hbars('aging',[
+ {l:'Até 1 dia',v:74,n:'74'},
+ {l:'1 a 3 dias',v:123,n:'123'},
+ {l:'3 a 7 dias',v:66,n:'66'},
+ {l:'7 a 14 dias',v:31,n:'31',c:'crit'},
+ {l:'Mais de 14 dias',v:70,n:'70',c:'crit'},
+],123);
+
+const D=[[1,50,19,8,1],[2,63,31,12,1],[3,67,35,11,2],[4,120,36,13,0],[5,101,38,2,0],[6,103,31,15,1],[7,85,38,8,0],[8,78,25,7,2],[9,72,28,12,0],[10,85,37,10,3],[11,74,35,5,0],[12,89,41,4,0],[13,82,29,12,0],[14,79,24,10,2],[15,72,24,7,3],[16,115,54,11,1],[17,99,49,9,0],[18,92,36,13,0],[19,74,34,10,0],[20,115,50,11,1],[21,93,49,8,1],[22,121,73,7,0],[23,97,61,4,0],[24,101,55,3,0],[25,106,69,1,0]];
+(function(){
+  const el=document.getElementById('daily');const W=960,H=280,m={l:36,r:64,t:12,b:28};
+  const iw=W-m.l-m.r,ih=H-m.t-m.b,ymax=80;
+  const x=d=>m.l+(d-1)/24*iw,y=v=>m.t+ih-v/ymax*ih;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Leads por dia de Meta e Google em setembro">`;
+  for(let v=0;v<=ymax;v+=20){s+=`<line x1="${m.l}" x2="${m.l+iw}" y1="${y(v)}" y2="${y(v)}" stroke="var(${v?'--grid':'--axis'})" stroke-width="1"/><text x="${m.l-8}" y="${y(v)+4}" text-anchor="end" font-size="12" fill="var(--muted)">${v}</text>`;}
+  [1,5,10,15,20,25].forEach(d=>{s+=`<text x="${x(d)}" y="${H-8}" text-anchor="middle" font-size="12" fill="var(--muted)">${String(d).padStart(2,'0')}/09</text>`;});
+  s+=`<rect x="${x(22)}" y="${m.t}" width="${x(25)-x(22)}" height="${ih}" fill="var(--crit)" opacity=".07"/><text x="${x(23.5)}" y="${m.t+14}" text-anchor="middle" font-size="11" fill="var(--crit)" font-weight="600">0 reservas</text>`;
+  const path=k=>D.map((d,i)=>(i?'L':'M')+x(d[0]).toFixed(1)+' '+y(d[k]).toFixed(1)).join(' ');
+  s+=`<path d="${path(2)}" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round"/>`;
+  s+=`<path d="${path(3)}" fill="none" stroke="var(--s2)" stroke-width="2" stroke-linejoin="round"/>`;
+  const L=D[D.length-1];
+  s+=`<circle cx="${x(25)}" cy="${y(L[2])}" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/><text x="${x(25)+10}" y="${y(L[2])+4}" font-size="12" fill="var(--ink-2)" font-weight="600">Meta ${L[2]}</text>`;
+  s+=`<circle cx="${x(25)}" cy="${y(L[3])}" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/><text x="${x(25)+10}" y="${y(L[3])+4}" font-size="12" fill="var(--ink-2)" font-weight="600">Google ${L[3]}</text>`;
+  s+=`<line id="xh" x1="0" x2="0" y1="${m.t}" y2="${m.t+ih}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/>`;
+  s+=`<rect x="${m.l}" y="${m.t}" width="${iw}" height="${ih}" fill="transparent" id="hit"/></svg>`;
+  el.innerHTML=s;
+  const svg=el.querySelector('svg'),xh=svg.querySelector('#xh');
+  svg.querySelector('#hit').addEventListener('mousemove',e=>{
+    const r=svg.getBoundingClientRect();const px=(e.clientX-r.left)/r.width*W;
+    const d=Math.max(1,Math.min(25,Math.round((px-m.l)/iw*24+1)));const row=D[d-1];
+    xh.setAttribute('x1',x(d));xh.setAttribute('x2',x(d));xh.setAttribute('visibility','visible');
+    showTip(e,`<b>${String(d).padStart(2,'0')}/09</b><br>Total: ${row[1]} leads<br>Meta: ${row[2]} · Google: ${row[3]}<br>Reservas: ${row[4]}`);
+  });
+  svg.querySelector('#hit').addEventListener('mouseleave',()=>{xh.setAttribute('visibility','hidden');hideTip();});
+})();
+</script>
+</body>
+</html>
