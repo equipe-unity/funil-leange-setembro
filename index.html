@@ -146,7 +146,7 @@ td.na{color:var(--muted)}
 <div class="verdict">
   <span class="pill crit">Diagnóstico</span>
   <strong>Volume de lead não é o problema. Entraram 2.233 leads no mês e nenhum deles foi movido até “Reserva Concluída”. As 18 reservas registradas foram cadastradas como cards novos, já ganhos, e 10 delas vieram da base de clientes.</strong>
-  <p>O maior vazamento está logo na entrada: 55% dos leads somem antes de qualquer qualificação e são desqualificados automaticamente em 4 dias. O segundo gargalo é o orçamento: 364 propostas seguem abertas, 101 delas sem movimentação há mais de 7 dias. E desde 22/09 não houve nenhuma reserva.</p>
+  <p>O maior vazamento está logo na entrada: 55% dos leads somem antes de qualquer qualificação e são desqualificados automaticamente em 4 dias. O segundo gargalo vem depois do orçamento: 770 leads (34,5%) receberam proposta e só 18 viraram reserva (2,3%). 386 foram perdidos sem motivo registrado e 364 seguem abertos, 101 deles sem movimentação há mais de 7 dias. E desde 22/09 não houve nenhuma reserva.</p>
 </div>
 
 <div class="kpis">
@@ -159,7 +159,7 @@ td.na{color:var(--muted)}
 <section id="funil">
   <div class="sec-head">
     <span class="eyebrow">1 · Funil do mês</span>
-    <h2>O maior gap está entre a entrada e a primeira conversa real</h2>
+    <h2>Dois vazamentos: na primeira conversa e depois do orçamento</h2>
     <p>Funil reconstruído a partir da etapa atual de cada lead (o export não traz o histórico de etapas). Cada barra mostra quantos leads chegaram pelo menos até aquela fase.</p>
   </div>
   <div class="card">
@@ -169,13 +169,13 @@ td.na{color:var(--muted)}
     <div class="card">
       <ul class="insights">
         <li><span class="pill crit">Gap 1</span><span><b>Entrada → engajamento: perda de 54,5%.</b> 1.217 leads não passaram do contato inicial: 903 “parou de responder”, 65 “nunca respondeu”, 30 mensagens aleatórias e 219 que ainda estão em contato inicial. Só 1% dos que pararam de responder tem unidade, nº de hóspedes ou pets preenchidos, ou seja, a conversa morre antes da qualificação.</span></li>
-        <li><span class="pill crit">Gap 2</span><span><b>Orçamento → reserva: nenhuma conversão rastreada.</b> 384 leads receberam orçamento (364 ainda abertos) e nenhum foi para “Reserva Concluída”. Só 2 estão em “Link/Dados bancários enviados”.</span></li>
+        <li><span class="pill crit">Gap 2</span><span><b>Orçamento → reserva: 2,3%.</b> 770 leads receberam orçamento e só 18 fecharam. Metade (386) foi perdida depois da proposta, 364 seguem abertos e só 2 estão em “Link/Dados bancários enviados”. E as 18 reservas são cards criados já ganhos, não o lead movido até “Reserva Concluída”.</span></li>
       </ul>
     </div>
     <div class="card">
       <ul class="insights">
-        <li><span class="pill warn">Atenção</span><span><b>386 leads em “Finalizado/perdido” sem motivo.</b> É 25% de tudo o que foi perdido e não dá para saber se foi preço, data ou desistência. Essa etapa também não fecha o lead no Kommo (sem data de fechamento).</span></li>
-        <li><span class="pill info">Perfil</span><span><b>185 desqualificados por perfil</b> (18% dos que engajaram), puxados por “tem crianças” (115). Preço quase não aparece: só 11 leads saíram por “fora do orçamento”.</span></li>
+        <li><span class="pill warn">Atenção</span><span><b>386 leads perdidos depois de receber orçamento, sem motivo.</b> É 25% de tudo o que foi perdido e 50% de quem recebeu proposta. Não dá para saber se foi preço, data ou desistência. Essa etapa também não fecha o lead no Kommo (sem data de fechamento).</span></li>
+        <li><span class="pill info">Perfil</span><span><b>185 desqualificados por perfil</b> (18% dos que engajaram), puxados por “tem crianças” (115). Na qualificação, preço quase não aparece (11 leads por “fora do orçamento”), mas ele pode estar escondido nos 386 perdidos pós-proposta.</span></li>
       </ul>
     </div>
   </div>
@@ -189,7 +189,7 @@ td.na{color:var(--muted)}
   </div>
   <div class="card tbl-wrap">
     <table>
-      <thead><tr><th>Semana</th><th>Leads</th><th>Leads/dia</th><th>% Meta</th><th>% Google</th><th>% com orçamento</th><th>% sumiram</th><th>% crianças</th><th>Reservas</th><th>Receita</th></tr></thead>
+      <thead><tr><th>Semana</th><th>Leads</th><th>Leads/dia</th><th>% Meta</th><th>% Google</th><th>% orç. em aberto*</th><th>% sumiram</th><th>% crianças</th><th>Reservas</th><th>Receita</th></tr></thead>
       <tbody>
         <tr><td>S1 · 01–07/09</td><td>589</td><td>84</td><td>38,7%</td><td>11,7%</td><td>12,6%</td><td>57,2%</td><td>3,2%</td><td>5</td><td>R$ 27,8 mil</td></tr>
         <tr><td>S2 · 08–14/09<span class="sub">limpeza em massa em 10/09</span></td><td>559</td><td>80</td><td>39,2%</td><td>10,7%</td><td class="hi">5,5%</td><td>51,7%</td><td>5,0%</td><td>7</td><td>R$ 77,8 mil</td></tr>
@@ -197,6 +197,7 @@ td.na{color:var(--muted)}
         <tr><td>S4 · 22–25/09<span class="sub">em maturação</span></td><td>425</td><td>106</td><td class="hi">60,7%</td><td class="hi">3,5%</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="hi">0</td><td class="hi">R$ 0</td></tr>
       </tbody>
     </table>
+    <p class="note" style="margin-top:10px">* Só “Orçamento enviado” e “Link/dados”. Não inclui perdidos pós-orçamento nem reservas, que também passaram pela proposta; a taxa completa por semana exige o export lead a lead.</p>
   </div>
   <div class="card">
     <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px">
@@ -208,11 +209,11 @@ td.na{color:var(--muted)}
   </div>
   <div class="grid2">
     <div class="card"><ul class="insights">
-      <li><span class="pill crit">Queda</span><span><b>Semana 2 teve a pior taxa de orçamento (5,5%)</b> e o maior volume em “Finalizado/perdido” (30%). Foi também a última semana em que a Atendente A, com melhor taxa de orçamento, recebeu leads.</span></li>
+      <li><span class="pill crit">Queda</span><span><b>Semana 2 teve o menor % de orçamento em aberto (5,5%) porque 30% dos leads foram para “Finalizado/perdido”</b>, que também já passaram pelo orçamento. Somando, é provavelmente a semana com mais propostas enviadas e mais perdas pós-proposta. Foi também a última semana em que a Atendente A recebeu leads.</span></li>
       <li><span class="pill warn">Tendência</span><span><b>“Tem crianças” dobrou</b> de 3,2% para 6,9% dos leads entre S1 e S3, acompanhando o aumento da participação da Meta.</span></li>
     </ul></div>
     <div class="card"><ul class="insights">
-      <li><span class="pill good">Melhora</span><span><b>Semana 3 teve a melhor taxa de orçamento (17,3%)</b>, mas esses orçamentos ainda não viraram reserva.</span></li>
+      <li><span class="pill good">Melhora</span><span><b>Semana 3 tem o maior % de orçamento em aberto (17,3%)</b>: propostas ainda vivas que podem ser resgatadas.</span></li>
       <li><span class="pill crit">Alerta</span><span><b>4 dias seguidos sem reserva</b> (22 a 25/09), mesmo com o maior volume de leads do mês.</span></li>
     </ul></div>
   </div>
@@ -230,7 +231,7 @@ td.na{color:var(--muted)}
       <li><span class="pill crit">Automação</span><span><b>“Parou de responder” é uma regra automática de 4 dias.</b> A mediana entre criação e desqualificação é exatamente 4,0 dias e 91% desses leads nunca foram editados por uma pessoa. Não há evidência no CRM de follow-up antes da regra disparar.</span></li>
       <li><span class="pill warn">Processo</span><span><b>“Nunca respondeu” deixou de ser usado depois da S1</b> (59 na S1, 0 na S3). Os casos foram absorvidos por “parou de responder”, o que mistura quem nunca falou com quem abandonou a conversa.</span></li>
       <li><span class="pill warn">Mídia</span><span><b>64% dos “tem crianças” vêm da Meta.</b> No conjunto de público aberto “Pet friendly”, 17,6% dos leads têm crianças. Se a pousada não aceita crianças, o anúncio não está deixando isso claro.</span></li>
-      <li><span class="pill info">Preço</span><span><b>Preço não aparece como barreira.</b> “Fora do orçamento” soma 11 leads (0,7% das perdas). Mas os 386 sem motivo podem esconder isso.</span></li>
+      <li><span class="pill info">Preço</span><span><b>Preço pode estar escondido no pós-orçamento.</b> Na qualificação, “fora do orçamento” soma só 11 leads (0,7% das perdas), mas os 386 perdidos depois de receber a proposta não têm motivo registrado.</span></li>
     </ul></div>
   </div>
 </section>
@@ -243,7 +244,7 @@ td.na{color:var(--muted)}
   </div>
   <div class="card tbl-wrap">
     <table>
-      <thead><tr><th>Origem</th><th>Leads</th><th>% do total</th><th>% com orçamento</th><th>% sumiram</th><th>% crianças</th><th>Reservas*</th></tr></thead>
+      <thead><tr><th>Origem</th><th>Leads</th><th>% do total</th><th>% orç. em aberto*</th><th>% sumiram</th><th>% crianças</th><th>Reservas*</th></tr></thead>
       <tbody>
         <tr><td>Meta Ads</td><td>1.001</td><td>44,8%</td><td class="hi">9,5%</td><td class="hi">58,6%</td><td class="hi">7,6%</td><td class="hi">0</td></tr>
         <tr><td>Sem UTM<span class="sub">WhatsApp direto, indicação, base</span></td><td>818</td><td>36,6%</td><td>12,0%</td><td>56,2%</td><td>3,4%</td><td>10</td></tr>
@@ -252,13 +253,13 @@ td.na{color:var(--muted)}
         <tr><td>Site (orgânico)</td><td>42</td><td>1,9%</td><td class="ok">21,9%</td><td class="ok">37,5%</td><td>3,1%</td><td>0</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:10px">* Reservas atribuídas pelo UTM do card de reserva.</p>
+    <p class="note" style="margin-top:10px">* Reservas atribuídas pelo UTM do card de reserva. “% orç. em aberto” não inclui perdidos pós-orçamento nem reservas.</p>
   </div>
   <div class="grid2">
     <div class="card tbl-wrap">
       <h3 style="margin-bottom:10px">Meta · campanhas</h3>
       <table>
-        <thead><tr><th>Campanha</th><th>Leads</th><th>% orç.</th><th>% crianças</th></tr></thead>
+        <thead><tr><th>Campanha</th><th>Leads</th><th>% orç. aberto*</th><th>% crianças</th></tr></thead>
         <tbody>
           <tr><td>Ongoing RJ</td><td>632</td><td>13,8%</td><td class="hi">9,7%</td></tr>
           <tr><td>Ongoing SP</td><td>147</td><td class="hi">6,8%</td><td>2,7%</td></tr>
@@ -271,7 +272,7 @@ td.na{color:var(--muted)}
     <div class="card tbl-wrap">
       <h3 style="margin-bottom:10px">Meta · criativos</h3>
       <table>
-        <thead><tr><th>Criativo</th><th>Leads</th><th>% orç.</th><th>% sumiram</th></tr></thead>
+        <thead><tr><th>Criativo</th><th>Leads</th><th>% orç. aberto*</th><th>% sumiram</th></tr></thead>
         <tbody>
           <tr><td>AD012 Serra Geral (vídeo)<span class="sub">no ar desde 24/06 · 66% dos leads Meta</span></td><td>657</td><td>12,0%</td><td class="hi">45,4%</td></tr>
           <tr><td>AD04 Feriado 12/nov<span class="sub">novo, 23/09 · em maturação</span></td><td>110</td><td>15,5%</td><td class="na">—</td></tr>
@@ -284,7 +285,7 @@ td.na{color:var(--muted)}
   </div>
   <div class="card"><ul class="insights">
     <li><span class="pill good">Escalar</span><span><b>Ofertas com data e público morno convertem melhor.</b> Natal (28,6% de orçamento), Onetime Ações (25,6%) e o público “Mix Engajamento 180D” (28,3%) têm o dobro da taxa do criativo genérico.</span></li>
-    <li><span class="pill crit">Revisar</span><span><b>Um único criativo genérico, no ar há 3 meses, concentra dois terços dos leads Meta.</b> Sinal claro de fadiga e de lead pouco intencionado. SP tem a pior taxa de orçamento (6,8%), provavelmente por distância.</span></li>
+    <li><span class="pill crit">Revisar</span><span><b>Um único criativo genérico, no ar há 3 meses, concentra dois terços dos leads Meta.</b> Sinal claro de fadiga e de lead pouco intencionado. SP tem o menor % de orçamento em aberto (6,8%), possivelmente por distância.</span></li>
   </ul></div>
 </section>
 
@@ -296,27 +297,27 @@ td.na{color:var(--muted)}
   </div>
   <div class="grid2">
     <div class="card">
-      <h3 style="margin-bottom:10px">% com orçamento por horário de chegada</h3>
+      <h3 style="margin-bottom:10px">% orçamento em aberto por horário de chegada*</h3>
       <div class="hbars" id="hour"></div>
       <p class="note" style="margin-top:10px">Das 19h às 7h, 61–69% dos leads somem, contra 51% de manhã. 29% dos leads chegam nessa janela.</p>
     </div>
     <div class="card">
-      <h3 style="margin-bottom:10px">% com orçamento por dia de chegada</h3>
+      <h3 style="margin-bottom:10px">% orçamento em aberto por dia de chegada*</h3>
       <div class="hbars" id="dow"></div>
       <p class="note" style="margin-top:10px">Segunda, terça e sábado rendem metade da taxa de quarta, quinta e domingo.</p>
     </div>
   </div>
   <div class="card tbl-wrap">
     <table>
-      <thead><tr><th>Atendente</th><th>Leads</th><th>% com orçamento</th><th>% sumiram</th><th>% perdido sem motivo</th><th>Reservas</th><th>Receita</th></tr></thead>
+      <thead><tr><th>Atendente</th><th>Leads</th><th>% chegaram ao orçamento</th><th>% sumiram</th><th>% perdido pós-orçamento</th><th>Reservas</th><th>% orçamento → reserva</th><th>Receita</th></tr></thead>
       <tbody>
-        <tr><td>Atendente A<span class="sub">sem leads novos desde 14/09</span></td><td>393</td><td class="ok">24,9%</td><td>60,1%</td><td>4,8%</td><td>4</td><td>R$ 54,0 mil</td></tr>
-        <tr><td>Atendente B</td><td>626</td><td>11,7%</td><td>55,9%</td><td>21,7%</td><td>8</td><td>R$ 67,9 mil</td></tr>
-        <tr><td>Atendente C</td><td>668</td><td class="hi">4,5%</td><td>52,7%</td><td class="hi">33,7%</td><td>6</td><td>R$ 27,8 mil</td></tr>
-        <tr><td>Atendente D</td><td>28</td><td>7,1%</td><td>14,3%</td><td>0%</td><td>0</td><td>—</td></tr>
+        <tr><td>Atendente A<span class="sub">sem leads novos desde 14/09</span></td><td>393</td><td>30,7%</td><td>60,1%</td><td class="ok">4,8%</td><td>4</td><td>3,3%</td><td>R$ 54,0 mil</td></tr>
+        <tr><td>Atendente B</td><td>626</td><td>34,7%</td><td>55,9%</td><td>21,7%</td><td>8</td><td class="ok">3,7%</td><td>R$ 67,9 mil</td></tr>
+        <tr><td>Atendente C</td><td>668</td><td class="ok">39,1%</td><td>52,7%</td><td class="hi">33,7%</td><td>6</td><td class="hi">2,3%</td><td>R$ 27,8 mil</td></tr>
+        <tr><td>Atendente D</td><td>28</td><td class="hi">7,1%</td><td>14,3%</td><td>0%</td><td>0</td><td class="na">—</td><td>—</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:10px">Parte da diferença é de processo: a Atendente C move para “Finalizado/perdido” leads que outras atendentes mantêm em “Orçamento enviado”. Sem motivo registrado, não dá para separar desempenho de padrão de uso do CRM. Na S3, a Atendente C recebeu 383 leads contra 265 da Atendente B.</p>
+    <p class="note" style="margin-top:10px">Contando todos que passaram pelo orçamento (em aberto, link, perdido pós-orçamento e reserva), a Atendente C é a que mais leva leads até a proposta (39,1%), mas a que menos converte proposta em reserva (2,3%) e a que mais perde depois do orçamento (33,7% dos leads). Reservas contadas no mês; a taxa pode variar em até 1 ponto. Na S3, a Atendente C recebeu 383 leads contra 265 da Atendente B.</p>
   </div>
 </section>
 
@@ -373,7 +374,7 @@ td.na{color:var(--muted)}
   <ul class="method">
     <li>Fonte: export do Kommo com 2.233 leads do “Funil de Vendas” criados de 01/09 a 25/09/2026 (16h10). Retrato da etapa atual; o histórico de etapas não vem no export.</li>
     <li>Taxas de funil, origem, horário e atendente usam 1.715 leads criados até 20/09, para não distorcer com leads que ainda não completaram os 4 dias da automação.</li>
-    <li>“Sumiram” = desqualificado por “parou de responder” ou “nunca respondeu”. “Com orçamento” = etapa atual “Orçamento enviado” ou “Link/dados bancários enviados”.</li>
+    <li>“Sumiram” = desqualificado por “parou de responder” ou “nunca respondeu”. “Chegaram ao orçamento” = etapa atual “Orçamento enviado”, “Link/dados bancários enviados”, “Finalizado/perdido” ou “Reserva Concluída”, que só existem depois da proposta. * “% orçamento em aberto” (semanas, origens, campanhas, criativos, horário e dia) considera só “Orçamento enviado” e “Link/dados”: o export consolidado não tem os perdidos pós-orçamento por recorte, então essa taxa ainda não é a completa.</li>
     <li>Receita = campo “Venda” das 18 reservas. Não há dados de agosto neste arquivo; para comparar com o mês anterior, exportar o mesmo relatório de agosto.</li>
   </ul>
 </section>
@@ -391,8 +392,8 @@ const F=[
  {l:'Leads recebidos',s:'todas as origens',v:2233},
  {l:'Engajaram na conversa',s:'passaram do 1º contato',v:1016,gap:'−1.217 leads (54,5%): 903 pararam de responder, 219 ainda em contato inicial, 65 nunca responderam, 30 aleatórios',big:true},
  {l:'Perfil compatível',s:'sem crianças, com pet, perto',v:831,gap:'−185 (18,2%): 115 com crianças, 24 genéricos, 18 sem pet, 17 distância, 11 preço'},
- {l:'Receberam orçamento',s:'em aberto ou adiante',v:384,gap:'−447: 386 finalizados/perdidos sem motivo, 61 ainda em qualificação',big:true},
- {l:'Reserva a partir do funil',s:'lead movido até “Reserva Concluída”',v:0,gap:'364 orçamentos abertos · 2 com link de pagamento',big:true},
+ {l:'Receberam orçamento',s:'em aberto, link, perdido ou reserva',v:770,gap:'−61 (7,3%): ainda em qualificação'},
+ {l:'Reservas',s:'etapa “Reserva Concluída”',v:18,gap:'−752 (97,7%): 386 perdidos pós-orçamento sem motivo, 364 orçamentos abertos, 2 com link de pagamento',big:true},
 ];
 const fe=document.getElementById('funnel');
 F.forEach((s,i)=>{
@@ -405,7 +406,7 @@ F.forEach((s,i)=>{
   d.addEventListener('mouseleave',hideTip);
   fe.appendChild(d);
 });
-const g2=document.createElement('div');g2.className='gap';g2.innerHTML='<span></span><span style="color:var(--ink-2)">Fora do funil: 18 reservas cadastradas já como ganhas (R$ 149,7 mil), 10 delas de clientes da base.</span>';fe.appendChild(g2);
+const g2=document.createElement('div');g2.className='gap';g2.innerHTML='<span></span><span style="color:var(--ink-2)">As 18 reservas (R$ 149,7 mil) foram cadastradas como cards novos já ganhos, não movidas a partir do lead original. 10 delas são clientes da base.</span>';fe.appendChild(g2);
 
 function hbars(id,rows,max){
   const el=document.getElementById(id);
@@ -419,7 +420,7 @@ function hbars(id,rows,max){
 }
 hbars('loss',[
  {l:'Parou de responder',v:903,n:'903 <small>57,6%</small>',c:'crit',tip:'Automação de 4 dias · 91% sem edição humana'},
- {l:'Finalizado/perdido (sem motivo)',v:386,n:'386 <small>24,6%</small>',c:'em'},
+ {l:'Finalizado/perdido pós-orçamento (sem motivo)',v:386,n:'386 <small>24,6%</small>',c:'em'},
  {l:'Tem crianças',v:115,n:'115 <small>7,3%</small>',c:'em',tip:'74 vindos da Meta'},
  {l:'Nunca respondeu',v:65,n:'65 <small>4,1%</small>'},
  {l:'Mensagens aleatórias',v:30,n:'30 <small>1,9%</small>'},
